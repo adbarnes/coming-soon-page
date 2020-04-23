@@ -2,4 +2,4 @@
 
 Flex layout practise
 
-HTMl, CSS and JS
+HTML, CSS and JS
