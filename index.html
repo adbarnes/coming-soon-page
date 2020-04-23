@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Coming soon page</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      html {
+        height: 100%;
+      }
+      .tracking-widest {
+        letter-spacing: 0.2em;
+      }
+      .subtitle,
+      .border-input,
+      p {
+        color: hsl(0, 36%, 70%);
+      }
+      .border-input {
+        border-color: hsl(0, 36%, 70%);
+      }
+
+      .text-7xl {
+        font-size: 5rem;
+      }
+      .gradient {
+        background-image: linear-gradient(
+          135deg,
+          hsl(0, 80%, 86%),
+          hsl(0, 74%, 74%)
+        );
+        background-color: transparent;
+        background-blend-mode: screen;
+      }
+      .flex-left {
+        flex: 1 1 60%;
+      }
+      .flex-right {
+        flex: 1 1 40%;
+      }
+      input {
+        padding-top: 0.65rem;
+        padding-bottom: 0.65rem;
+      }
+    </style>
+  </head>
+  <body class="h-full w-full antialiased">
+    <div class="flex flex-col sm:flex-row h-full w-full">
+      <div
+        class="flex flex-col items-center justify-center flex-left bg-cover"
+        style="background-image: url(images/bg-pattern-desktop.svg);"
+      >
+        <div class="md:max-w-lg mx-auto flex flex-col p-6">
+          <div class="mb-24 flex justify-center md:justify-start">
+            <img src="images/logo.svg" alt="Base Apparel logo" />
+          </div>
+          <div class="flex mb-12 md:hidden items-center justify-center">
+            <img src="images/hero-mobile.jpg" alt="Woman posing" />
+          </div>
+          <h1
+            class="text-7xl leading-none uppercase tracking-widest text-center md:text-left"
+          >
+            <span class="block subtitle">We're</span>
+            <span class="block font-semibold">coming</span>
+            <span class="block font-semibold">soon</span>
+          </h1>
+          <p
+            class="my-12 font-base font-semibold leading-loose text-center md:text-left"
+          >
+            Hello fellow shoppers! We're currently building our new fashion
+            store. Add your email below to stay up-to-date with announcements
+            and our launch deals.
+          </p>
+          <div class="flex items-center justify-between">
+            <input
+              class="border-input appearance-none border rounded-full w-full px-4 text-gray-700 leading-none focus:outline-none focus:shadow-outline"
+              type="email"
+              placeholder="Email Address"
+              id="inptEmailAddress"
+            /><button
+              id="btnSubmit"
+              class="gradient -ml-20 w-24 hover:bg-red-700 font-bold py-3 px-4 rounded-full flex justify-center"
+            >
+              <img src="images/icon-arrow.svg" alt="Submit" />
+            </button>
+          </div>
+          <div class="flex">
+            <div
+              id="divAlertContainer"
+              class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded flex mt-3 w-full hidden"
+              role="alert"
+            >
+              <img src="images/icon-error.svg" alt="Error" />
+              <span id="spanAlert" class="ml-2 block"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden md:flex flex-right">
+        <img
+          src="images/hero-desktop.jpg"
+          class="h-full w-full object-cover"
+          alt="Woman posing"
+        />
+      </div>
+    </div>
+    <script>
+      let input = document.getElementById("inptEmailAddress");
+      let button = document.getElementById("btnSubmit");
+      let alert = document.getElementById("spanAlert");
+      let alertContainer = document.getElementById("divAlertContainer");
+
+      button.addEventListener("click", function () {
+        let inputStr = input.value;
+        if (inputStr === "" || inputStr.includes("@") === false) {
+          alertContainer.classList.remove("hidden");
+          alert.innerText = "Please enter correct email address!";
+        }
+      });
+    </script>
+  </body>
+</html>
